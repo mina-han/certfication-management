@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Customer from './components/Customer'
+import CustomerAdd from './components/CustomerAdd';
 import './App.css';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -9,7 +10,6 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
-
 const styles = theme => ({
   root: {
     width: '100%',
@@ -26,9 +26,23 @@ const styles = theme => ({
 
 class App extends Component {
 
-  state = {
-    customers: "",
-    completed: 0
+  constructor(props) {
+    super(props);
+    this.state = {
+      customers: '',
+      completed: 0
+    }
+    this.stateRefresh=this.stateRefresh.bind(this);
+  }
+
+  stateRefresh = () => {
+    this.setState({
+      custoemr:'',
+      completed: 0
+    });
+    this.callApi()
+    .then(res => this.setState({customers: res}))
+    .catch(err => console.log(err));
   }
 
   componentDidMount() {
@@ -51,6 +65,7 @@ class App extends Component {
   render() {
     const { classes } = this.props;
   return (
+    <div>
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
@@ -59,8 +74,9 @@ class App extends Component {
           <TableCell>이미지</TableCell>
           <TableCell>인증기관</TableCell>
           <TableCell>인증내용</TableCell>
-          <TableCell>인증날짜</TableCell>
+          <TableCell>인증등록</TableCell>
           <TableCell>인증만료</TableCell>
+          <TableCell>설정</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -87,6 +103,8 @@ class App extends Component {
     </TableBody>
     </Table>
   </Paper>
+  <CustomerAdd stateRefresh={this.stateRefresh}/>
+  </div>
   );
 }
 }

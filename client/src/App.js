@@ -71,7 +71,7 @@ class App extends Component {
         <TableHead>
           <TableRow>
           <TableCell>번호</TableCell>
-          <TableCell>이미지</TableCell>
+          <TableCell>인증서</TableCell>
           <TableCell>인증기관</TableCell>
           <TableCell>인증내용</TableCell>
           <TableCell>인증등록</TableCell>

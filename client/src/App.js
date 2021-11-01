@@ -23,26 +23,26 @@ const customers = [
   {
   'id': 1,
   'image': 'https://placeimg.com/64/64/1',
-  'name': '홍길동',
-  'birthday': '980427',
-  'gender': '남자',
-  'job': '대학생'
+  'name': '노원구청',
+  'content': '주민등록증',
+  'date': '2021.05.05',
+  'expire': '2023.5.6'
   },
   {
   'id': 2,
   'image': 'https://placeimg.com/64/64/2',
-  'name': '한미나',
-  'birthday': '970427',
-  'gender': '여자',
-  'job': '대학생'
+  'name': '도로교통공단',
+  'content': '운전면허증',
+  'date': '2021.06.04',
+  'expire': '2024.2.9'
   },
   {
   'id': 3,
   'image': 'https://placeimg.com/64/64/3',
-  'name': '개발자',
-  'birthday': '990427',
-  'gender': '남자',
-  'job': '대학생'
+  'name': '서울여자대학교',
+  'content': '학생증',
+  'date': '2021.10.10',
+  'expire': '2025.3.5'
   }
 ]
 
@@ -56,10 +56,10 @@ class App extends Component {
           <TableRow>
           <TableCell>번호</TableCell>
           <TableCell>이미지</TableCell>
-          <TableCell>이름</TableCell>
-          <TableCell>생년월일</TableCell>
-          <TableCell>성별</TableCell>
-          <TableCell>직업</TableCell>
+          <TableCell>인증기관</TableCell>
+          <TableCell>인증내용</TableCell>
+          <TableCell>인증날짜</TableCell>
+          <TableCell>인증만료</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -70,9 +70,9 @@ class App extends Component {
           id={c.id}
           image={c.image}
           name={c.name}
-          birthday={c.birthday}
-          gender={c.gender}
-          job={c.job}
+          content={c.content}
+          date={c.date}
+          expire={c.expire}
           />
         );
       })
